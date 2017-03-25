@@ -8,5 +8,5 @@ class ruangan extends Model
 {
     //
     protected $table = 'ruangan';
-    protected $filllable = ['title'];
+   // protected $filllable = ['title'];
 }
