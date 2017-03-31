@@ -12,4 +12,4 @@
 </div>
 {!! Form::close() !!}
 </div>
-@stop
+@stops
