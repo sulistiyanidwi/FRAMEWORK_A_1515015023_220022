@@ -37,7 +37,7 @@ use App\pengguna;
 //	$pengguna -> save();
 //	return "data dengan username {$pengguna->username} telah disimpan";
 //});
-//Route::get('mahasiswa','mahasiswacontroller@awal');
+//Route::get('mahasiswa','dosen_matakuliahcontroller@awal');
 //Route::get('mahasiswa/tambah','mahasiswacontroller@tambah');
 
 //Route::get('dosen', 'dosencontroller@awal');
@@ -55,6 +55,29 @@ use App\pengguna;
 //Route::get('jadwal_matakuliah','jadwal_matakuliahcontroller@awal');
 //Route::get('jadwal_matakuliah/tambah','jadwal_matakuliahcontroller@tambah');
 //Route::get('pengguna/{pengguna}', 'penggunacontroller@lihat');
+Route::get('mahasiswa/', 'mahasiswacontroller@awal');
+Route::get('mahasiswa/tambah', 'mahasiswacontroller@tambah');
+Route::post('mahasiswa/simpan', 'mahasiswacontroller@simpan');
+Route::get('mahasiswa/edit/{mahasiswa}', 'mahasiswacontroller@edit');
+Route::post('mahasiswa/edit/{mahasiswa}', 'mahasiswacontroller@update');
+Route::get('mahasiswa/lihat/{mahasiswa}', 'mahasiswacontroller@lihat');
+Route::get('mahasiswa/hapus/{mahasiswa}', 'mahasiswacontroller@hapus');
+
+Route::get('dosen_matakuliah/', 'dosen_matakuliahcontroller@awal');
+Route::get('dosen_matakuliah/tambah', 'dosen_matakuliahcontroller@tambah');
+Route::post('dosen_matakuliah/simpan', 'dosen_matakuliahcontroller@simpan');
+Route::get('dosen_matakuliah/edit/{dosen_matakuliah}', 'dosen_matakuliahcontroller@edit');
+Route::post('dosen_matakuliah/edit/{dosen_matakuliah}', 'dosen_matakuliahcontroller@update');
+Route::get('dosen_matakuliah/lihat/{dosen_matakuliah}', 'dosen_matakuliahcontroller@lihat');
+Route::get('dosen_matakuliah/hapus/{dosen_matakuliah}', 'dosen_matakuliahcontroller@hapus');
+
+Route::get('jadwal_matakuliah/', 'jadwal_matakuliahcontroller@awal');
+Route::get('jadwal_matakuliah/tambah', 'jadwal_matakuliahcontroller@tambah');
+Route::post('jadwal_matakuliah/simpan', 'jadwal_matakuliahcontroller@simpan');
+Route::get('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'jadwal_matakuliahcontroller@edit');
+Route::post('jadwal_matakuliah/edit/{jadwal_matakuliah}', 'jadwal_matakuliahcontroller@update');
+Route::get('jadwal_matakuliah/lihat/{jadwal_matakuliah}', 'jadwal_matakuliahcontroller@lihat');
+Route::get('jadwal_matakuliah/hapus/{jadwal_matakuliah}', 'jadwal_matakuliahcontroller@hapus');
 
 Route::get('pengguna','penggunacontroller@awal');
 Route::get('pengguna/tambah', 'penggunacontroller@tambah');
@@ -81,3 +104,10 @@ Route::get('ruangan/lihat/{ruangan}', 'ruangancontroller@lihat');
 Route::get('ruangan/hapus/{ruangan}', 'ruangancontroller@hapus');
 
 
+Route::get('dosen', 'dosencontroller@awal');
+Route::get('dosen/tambah', 'dosencontroller@tambah');
+Route::post('dosen/simpan', 'dosencontroller@simpan');
+Route::get('dosen/edit/{dosen}', 'dosencontroller@edit');
+Route::post('dosen/edit/{dosen}', 'dosencontroller@update');
+Route::get('dosen/lihat/{dosen}', 'dosencontroller@lihat');
+Route::get('dosen/hapus/{dosen}', 'dosencontroller@hapus');

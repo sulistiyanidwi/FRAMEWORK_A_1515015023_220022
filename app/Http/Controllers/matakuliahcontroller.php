@@ -9,7 +9,7 @@ use App\matakuliah;
 
 class matakuliahcontroller extends Controller
 {
-	public function awal()
+public function awal()
     {
         return view('matakuliah.awal',['data'=>matakuliah::all()]);
     }
@@ -37,8 +37,8 @@ class matakuliahcontroller extends Controller
     }
     public function update($id,Request $input)
     {
-        $matakuliah= matakuliah::find($id);
-        $matakuliah->title=$input->title;
+        $matakuliah = matakuliah::find($id);
+       $matakuliah->title=$input->title;
         $matakuliah->Keterangan =$input->Keterangan;
         $informasi=$matakuliah->save() ? 'Berhasil update data':'Gagal update data';
         return redirect('matakuliah')->with(['informasi'=>$informasi]);
@@ -51,4 +51,3 @@ class matakuliahcontroller extends Controller
     }
 
 }
-

@@ -14,3 +14,4 @@ class ruangan extends Model
     return $this->hasMany(jadwal_matakuliah::class);
     }
 }
+
