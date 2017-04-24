@@ -24,6 +24,10 @@ public function tambah(){
 }
 
 public function simpan(Request $input){
+    $this->validate($input,[
+        'dosen_matakuliah'=>'required',
+        'dosen_id'=>'required',
+        ]);
     $dosen_matakuliah= new dosen_matakuliah($input->only('matakuliah_id','dosen_id'));
         if ($dosen_matakuliah->save()) $this->informasi = 'Berhasil Simpan Jadwal dosen ';
         return redirect('dosen_matakuliah')->with(['informasi'=>$this->informasi]);

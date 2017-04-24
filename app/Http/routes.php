@@ -55,6 +55,13 @@ use App\pengguna;
 //Route::get('jadwal_matakuliah','jadwal_matakuliahcontroller@awal');
 //Route::get('jadwal_matakuliah/tambah','jadwal_matakuliahcontroller@tambah');
 //Route::get('pengguna/{pengguna}', 'penggunacontroller@lihat');
+
+Route::get('/login', 'sesicontroller@form');
+Route::post('/login', 'sesicontroller@validasi');
+Route::get('/logout', 'sesicontroller@logout');
+Route::get('/', 'sesicontroller@index');
+Route::group(['middleware'=>'Authentifikasiuser'],function()
+{
 Route::get('mahasiswa/', 'mahasiswacontroller@awal');
 Route::get('mahasiswa/tambah', 'mahasiswacontroller@tambah');
 Route::post('mahasiswa/simpan', 'mahasiswacontroller@simpan');
@@ -111,29 +118,48 @@ Route::get('dosen/edit/{dosen}', 'dosencontroller@edit');
 Route::post('dosen/edit/{dosen}', 'dosencontroller@update');
 Route::get('dosen/lihat/{dosen}', 'dosencontroller@lihat');
 Route::get('dosen/hapus/{dosen}', 'dosencontroller@hapus');
-
 Route::get('ujiHas', 'relationshipreborncontroller@ujiHas');
 Route::get('ujiDoesntHave', 'relationshipreborncontroller@ujiDoesntHave');
+});
+//Route::get('/',function() 
+//	{
+//		return\App\dosen_matakuliah::whereHas('dosen',function($query)
+//		{
+//			$query->where('nama','like','%s%');
+//		})->with('dosen')->groupBy('dosen_id')->get();
+//	});
 
-Route::get('/',function() 
-	{
-		return\App\dosen_matakuliah::whereHas('dosen',function($query)
-		{
-			$query->where('nama','like','%s%');
-		})->with('dosen')->groupBy('dosen_id')->get();
-	});
+//Route::get('/',function() 
+//	{
+//		return\App\dosen_matakuliah::whereHas('dosen',function($query)
+//		{
+//			$query->where('nama','like','%s%');
+//		})
+//		->OrWhereHas('matakuliah',function($kueri)
+//		{
+//			$kueri->where('title','like','%s%');
+//		})
+//		-> with('dosen')
+//		->groupBy('dosen_id')
+//		->get();
+//	});
 
-Route::get('/',function() 
-	{
-		return\App\dosen_matakuliah::whereHas('dosen',function($query)
-		{
-			$query->where('nama','like','%s%');
-		})
-		->OrWhereHas('matakuliah',function($kueri)
-		{
-			$kueri->where('title','like','%s%');
-		})
-		-> with('dosen')
-		->groupBy('dosen_id')
-		->get();
-	});
+//Route::get('/',function(Illuminate\Http\Request $request)
+//{
+//	echo "ini adalah request dari get". $request->nama;
+//});
+
+//use Illuminate\Http\Request;
+//Route::get('/',function()
+//{
+//	echo Form::open(['url'=>'/']).
+//			Form::label('nama').
+//			Form::text('nama',null).
+//			Form::submit('kirim').
+//			Form::close();
+//});
+//Route::post('/',function(Request $request)
+//{
+//	echo "Hasil dari form input tadi nama : ".$request->nama;
+//});
+

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\mahasiswa;
 use App\pengguna;
+use App\Http\Requests\MahasiswaRequest;
 
 class mahasiswacontroller extends Controller
 {
@@ -21,7 +22,12 @@ class mahasiswacontroller extends Controller
 		return view('mahasiswa.tambah');
 	}
 
-	public function simpan(Request $input){
+	public function simpan(MahasiswaRequest $input){
+		$this->validate($input,[
+        'nama'=>'required',
+        'nim'=>'required',
+        'alamat'=>'required',
+        ]);
 		$pengguna = new pengguna($input->only('username','password'));
 		if($pengguna->save()){
 			$mahasiswa = new mahasiswa();
@@ -43,7 +49,7 @@ class mahasiswacontroller extends Controller
 		return view('mahasiswa.lihat')->with(array('mahasiswa'=>$mahasiswa));
 	}
 
-	public function update ($id, Request $input){
+	public function update ($id, MahasiswaRequest $input){
 		$mahasiswa = mahasiswa::find($id);
 		$pengguna = $mahasiswa->pengguna;
 		$mahasiswa ->nama = $input->nama;

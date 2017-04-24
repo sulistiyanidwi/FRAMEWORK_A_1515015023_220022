@@ -19,6 +19,10 @@ public function awal()
     }
     public function simpan(Request $input)
     {
+        $this->validate($input,[
+        'title'=>'required',
+        'Keterangan'=>'required',
+        ]);
         $matakuliah = new matakuliah();
         $matakuliah->title=$input->title;
         $matakuliah->Keterangan =$input->Keterangan;

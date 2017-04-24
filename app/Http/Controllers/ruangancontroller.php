@@ -23,6 +23,9 @@ public function tambah()
 //public function simpan()
 public function simpan(Request $input)
 {
+	$this->validate($input,[
+        'title'=>'required',
+        ]);
 	//$ruangan = new ruangan();
 	//$ruangan -> username = 'jon doe';
 	//$ruangan -> password = 'doe_jon';
