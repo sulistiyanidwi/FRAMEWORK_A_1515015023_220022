@@ -60,7 +60,7 @@ Route::get('/login', 'sesicontroller@form');
 Route::post('/login', 'sesicontroller@validasi');
 Route::get('/logout', 'sesicontroller@logout');
 Route::get('/', 'sesicontroller@index');
-Route::group(['middleware'=>'Authentifikasiuser'],function()
+Route::group(['Middleware'=>'Authentifikasiuser'],function()
 {
 Route::get('mahasiswa/', 'mahasiswacontroller@awal');
 Route::get('mahasiswa/tambah', 'mahasiswacontroller@tambah');
